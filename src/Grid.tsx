@@ -13,13 +13,20 @@ interface RowData {
 export default function Grid() {
   const [columnDefs] = useState<ColDef<RowData>[]>([
     { headerName: "Name", field: "name" },
-    { headerName: "Color", field: "color" },
+    { headerName: "Color", field: "color", sortable: false },
   ]);
   const [rowData] = useState<RowData[]>(data.products);
+  const defaultColDef: ColDef<RowData> = {
+    sortable: true,
+  };
 
   return (
     <div className="ag-theme-quartz-auto-dark">
-      <AgGridReact columnDefs={columnDefs} rowData={rowData}></AgGridReact>
+      <AgGridReact
+        columnDefs={columnDefs}
+        rowData={rowData}
+        defaultColDef={defaultColDef}
+      ></AgGridReact>
     </div>
   );
 }
