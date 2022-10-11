@@ -12,6 +12,7 @@ interface RowData {
   customerId: number;
   dateOfOrder: Date;
   total: number;
+  color: string;
   account: {
     id: number;
     customerId: number;
@@ -41,8 +42,10 @@ export default function Grid() {
       headerName: "Color",
       field: "color",
       cellRenderer: ColorRenderer,
-      editable: true,
-      cellEditor: ColorEditor,
+      /**
+       * 3. Set the cellEditor property to ColorEditor and the
+       *    editable property to true
+       */
     },
     {
       headerName: "Account No",
