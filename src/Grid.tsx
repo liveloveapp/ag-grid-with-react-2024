@@ -10,6 +10,7 @@ interface RowData {
   accountId: number;
   customerId: number;
   dateOfOrder: Date;
+  total: number;
   account: {
     id: number;
     customerId: number;
@@ -48,15 +49,6 @@ export default function Grid() {
       headerName: "Total",
       field: "total",
       filter: "agNumberColumnFilter",
-      valueFormatter: (params) => {
-        if (!params.data) {
-          return "0";
-        }
-        return new Intl.NumberFormat("en-US", {
-          style: "currency",
-          currency: "USD",
-        }).format(params.value);
-      },
     },
   ]);
   const rowData = useMemo<RowData[]>(() => {
